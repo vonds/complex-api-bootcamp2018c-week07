@@ -26,7 +26,7 @@
     http.onreadystatechange = function () {
 
       if (http.readyState === XMLHttpRequest.DONE && http.status === 200) {
-        showArtists(JSON.parse(http.response));
+        showAlbums(JSON.parse(http.response));
         document.querySelector('#inputSearch').style.display = "none";
         document.querySelector('.hide').style.display = "block";
         fetch(`https://theaudiodb.com/api/v1/json/1/search.php?s=${artist}`)
@@ -45,8 +45,8 @@
                 <img class="artistPic" src="${response.artists[0].strArtistFanart}">
                 <a class="info" href="${response.artists[0].strWebsite}">${response.artists[0].strWebsite}</a>
                 <p class="info">${response.artists[0].strBiographyEN}</p>
-                
-            
+
+
               `
               parent.appendChild(paragraph);
               document.querySelector('.artistInfo').innerHTML = "Reset"
@@ -94,7 +94,6 @@
 
       container.innerHTML = '';
       container.insertAdjacentHTML('afterbegin', template);
-      hover()
     } else {
       document.querySelectorAll('#notMatch').style.display = 'block';
     }
